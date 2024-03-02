@@ -35,7 +35,7 @@ public class ProdukService {
     }
 
     public void update(Long id, Produk produk) {
-        produk.setId(id); // Set ID of the produk to be updated
+        produk.setId(id); 
         produkRepository.save(produk);
     }
 
