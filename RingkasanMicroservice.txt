@@ -1,3 +1,7 @@
+TUGAS RINGKASAN VIDEO 
+ANDRE FERDINAN
+2201081001
+
 Remote Procedur Invocation
  Alalasan kita menggunakan Remote Procedur Invocation adalah Ketika suatu
  Service membutuhkan data service lain
