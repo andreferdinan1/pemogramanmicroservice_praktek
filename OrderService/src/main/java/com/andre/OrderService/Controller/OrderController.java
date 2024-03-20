@@ -6,6 +6,7 @@ package com.andre.OrderService.Controller;
 
 import com.andre.OrderService.entity.Order;
 import com.andre.OrderService.service.OrderService;
+import com.andre.OrderService.vo.ResponseTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,46 +23,29 @@ import java.util.Optional;
 public class OrderController {
     @Autowired
     private OrderService orderService;
-
+    
     @GetMapping
-    public ResponseEntity<List<Order>> getAllOrders() {
-        List<Order> orders = orderService.getAllOrders();
-        return ResponseEntity.ok(orders);
+    public List<Order> getAll(){
+        return orderService.getAll();
     }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Order> getOrderById(@PathVariable Long id) {
-        Optional<Order> orderOptional = orderService.getOrderById(id);
-        if (orderOptional.isPresent()) {
-            return ResponseEntity.ok(orderOptional.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    
+    @GetMapping 
+    public Order getOrderById(@PathVariable("id") Long id){
+        return orderService.getOrderById(id);
     }
-
-    @PostMapping
-    public ResponseEntity<Order> createOrder(@RequestBody Order order) {
-        Order createdOrder = orderService.createOrder(order);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdOrder);
+    
+    @GetMapping
+    public List<ResponseTemplate>getOrderWithProdukById(@PathVariable("id")Long id){
+        return orderService.getOrderWithProdukById(id);
     }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Order> updateOrder(@PathVariable Long id, @RequestBody Order updatedOrder) {
-        Order updated = orderService.updateOrder(id, updatedOrder);
-        if (updated != null) {
-            return ResponseEntity.ok(updated);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteOrder(@PathVariable Long id) {
-        boolean deleted = orderService.deleteOrder(id);
-        if (deleted) {
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    
+    @PutMapping(path = "{id}")
+    public void updateOrder(@PathVariable("id")Long id,
+            @RequestParam(required = false) int jumlah,
+            @RequestParam(required = false) String tanggal,
+            @RequestParam(required = false) String status
+    ) {
+    
+        orderService.update(id, jumlah, tanggal, status);
     }
 }

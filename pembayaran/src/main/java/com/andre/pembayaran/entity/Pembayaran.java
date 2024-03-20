@@ -20,27 +20,26 @@ public class Pembayaran {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long orderId;
-    private String modePembayaran;
-    private int refNumber;
-    private String tglBayar;
+    private Long order_id;
+    private String mode_pembayaran;
+    private int ref_number;
+    private String tgl_bayar;
     private String status;
-    private double total;
-
-   
-    public Pembayaran() {
+    private Double total;
+    
+    public Pembayaran(){    
     }
 
-    public Pembayaran(Long orderId, String modePembayaran, int refNumber, String tglBayar, String status, double total) {
-        this.orderId = orderId;
-        this.modePembayaran = modePembayaran;
-        this.refNumber = refNumber;
-        this.tglBayar = tglBayar;
+    public Pembayaran(Long id, Long order_id, String mode_pembayaran, int ref_number, String tgl_bayar, String status, Double total) {
+        this.id = id;
+        this.order_id = order_id;
+        this.mode_pembayaran = mode_pembayaran;
+        this.ref_number = ref_number;
+        this.tgl_bayar = tgl_bayar;
         this.status = status;
         this.total = total;
     }
 
-    
     public Long getId() {
         return id;
     }
@@ -49,36 +48,36 @@ public class Pembayaran {
         this.id = id;
     }
 
-    public Long getOrderId() {
-        return orderId;
+    public Long getOrder_id() {
+        return order_id;
     }
 
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
+    public void setOrder_id(Long order_id) {
+        this.order_id = order_id;
     }
 
-    public String getModePembayaran() {
-        return modePembayaran;
+    public String getMode_pembayaran() {
+        return mode_pembayaran;
     }
 
-    public void setModePembayaran(String modePembayaran) {
-        this.modePembayaran = modePembayaran;
+    public void setMode_pembayaran(String mode_pembayaran) {
+        this.mode_pembayaran = mode_pembayaran;
     }
 
-    public int getRefNumber() {
-        return refNumber;
+    public int getRef_number() {
+        return ref_number;
     }
 
-    public void setRefNumber(int refNumber) {
-        this.refNumber = refNumber;
+    public void setRef_number(int ref_number) {
+        this.ref_number = ref_number;
     }
 
-    public String getTglBayar() {
-        return tglBayar;
+    public String getTgl_bayar() {
+        return tgl_bayar;
     }
 
-    public void setTglBayar(String tglBayar) {
-        this.tglBayar = tglBayar;
+    public void setTgl_bayar(String tgl_bayar) {
+        this.tgl_bayar = tgl_bayar;
     }
 
     public String getStatus() {
@@ -89,12 +88,17 @@ public class Pembayaran {
         this.status = status;
     }
 
-    public double getTotal() {
+    public Double getTotal() {
         return total;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(Double total) {
         this.total = total;
+    }
+
+    @Override
+    public String toString() {
+        return "Pembayaran{" + "id=" + id + ", order_id=" + order_id + ", mode_pembayaran=" + mode_pembayaran + ", ref_number=" + ref_number + ", tgl_bayar=" + tgl_bayar + ", status=" + status + ", total=" + total + '}';
     }
 }
     

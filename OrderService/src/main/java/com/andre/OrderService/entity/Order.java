@@ -16,10 +16,10 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name="dborder")
 public class Order {
-    @Id
+        @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long productId;
+    private Long produkId;
     private int jumlah;
     private String tanggal;
     private String status;
@@ -28,8 +28,9 @@ public class Order {
     public Order() {
     }
 
-    public Order(Long productId, int jumlah, String tanggal, String status, double total) {
-        this.productId = productId;
+    public Order(Long id, Long produkId, int jumlah, String tanggal, String status, double total) {
+        this.id = id;
+        this.produkId = produkId;
         this.jumlah = jumlah;
         this.tanggal = tanggal;
         this.status = status;
@@ -44,12 +45,12 @@ public class Order {
         this.id = id;
     }
 
-    public Long getProductId() {
-        return productId;
+    public Long getProdukId() {
+        return produkId;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    public void setProdukId(Long produkId) {
+        this.produkId = produkId;
     }
 
     public int getJumlah() {
@@ -83,11 +84,10 @@ public class Order {
     public void setTotal(double total) {
         this.total = total;
     }
-    
+
     @Override
     public String toString() {
-        return "Order{" + "id=" + id + ", productId=" + productId + ", jumlah=" + jumlah + ", tanggal=" + tanggal + ", status=" + status + ", total=" + total + '}';
+        return "Order{" + "id=" + id + ", produkId=" + produkId + ", jumlah=" + jumlah + ", tanggal=" + tanggal + ", status=" + status + ", total=" + total + '}';
     }
-    
     
 }
