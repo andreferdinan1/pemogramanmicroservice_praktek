@@ -1,0 +1,60 @@
+Remote Procedur Invocation
+ Alalasan kita menggunakan Remote Procedur Invocation adalah Ketika suatu
+ Service membutuhkan data service lain
+
+Contoh dari Remote Procedur Invocation 
+ .Restfull API (HTTP)
+ .gRPC
+ .Apache Thrift
+ .SOAP
+ .Java RMI
+ .Corba
+
+Sebaiknya gunakanlah Remote Procedur Invocation yang banyak digunakan,
+contoh nya adalah Restful API (API).
+
+Ketika sebuah service membutuhkan data dari service lain nya,service 
+tersebut dapat men call service lain nya tanpa mengakses database dari
+service yg dibutuhkan
+
+
+Keuntungan Menggunakan RPI
+ .sederhana dan mudah
+ .biasanya digunakan untuk komunikasi request-reply
+ .biasanya digunakan untuk proses Sysnc
+
+Mekanisme cara berkomunikasi antar service yang kedua
+
+Messaging
+contoh kasus nya adalah order service menggunakan database posgre,ketika selesai membuat
+membuat pesanan ,kita ingin mengirim email ke custumer service,sms,data penjualan
+ke service finance dan service report,data yg butuh komunikasi dg empat service sekaligus.
+
+Masalah di Komunikasi RPI
+ .Proses lama 
+ .Mengirim data yg sama berkali-kali
+ .Membuat paralel process sangat rumit
+
+Komunikasi dengan cara messaging
+ .messaging biasanya digunakan untuk komunikasi async
+ .async artinya komunikasi dilakukan tanpa harus menunggu selesai di proses
+ .dalam async kadang tidak perlu peduli balasan dari service yg dituju
+ .membutuhkan massage chanel sebagai jembatan untuk mengirim dan menerima data
+ .direkomendasikan menggunakan aplikasi message broker untuk melakukan management
+  massage chanel
+
+Komunikasi menggunakan messaging
+ .kita menginstall aplikasi message broker
+ .setelah itu kita membuat message chanel di dalam nya
+ .order service cukup mengirim data ke message chanel tanpa harus mengirim lansung
+  ke srvice nya,service yg dituju cukup menerima data secara async
+
+contoh message broker
+ .Redis(PubSub)
+ .Apache Kafka
+ .RabbitMQ
+ .NSQ
+ .Google PubSub
+ .Amazon Web Service SQS
+ 
+
