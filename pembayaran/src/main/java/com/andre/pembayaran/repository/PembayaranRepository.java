@@ -14,8 +14,5 @@ import org.springframework.stereotype.Repository;
  * @author andreferdinan
  */
 @Repository
-public interface PembayaranRepositori extends JpaRepository<Pembayaran, Long> {
-    public List<Pembayaran> findAll();
-
-    public Pembayaran getReferenceById(Long id);
+public interface PembayaranRepository extends JpaRepository<Pembayaran, Long> {
 }
